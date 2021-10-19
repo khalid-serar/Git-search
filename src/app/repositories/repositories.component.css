@@ -1,0 +1,8 @@
+#repo{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+}
+.dec{
+    min-height: 95px;
+}

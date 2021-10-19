@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+<div id="progress" class="container-fluid">
+    
+    <div class="overlay">
+        <app-search-form (searchOutput)= "searchs($event)"></app-search-form>
+    </div>
+    <div class="container content">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="userimg">
+                    <div class="card-img-top">
+                        <img style="border-radius: 150px;" src="{{user.avatar_url}}" alt="">
+                    </div>
+                    <div class="card-body">
+                        <span class="name"><i class="fa fa-user" style="font-size:30px"></i>&nbsp;{{user.login}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-7 user">
+                <div class="card-body ">
+                <h3>Github-Username : <strong>{{user.login}}</strong></h3><br>
+                   <hr>
+                   <p><i class="fa fa-file-o" style="font-size:28px"></i> &nbsp;&nbsp; Repositories:&nbsp;&nbsp; <span class="display">{{user.public_repos}}</span></p>
+                   <p><i class="fa fa-user-circle" aria-hidden="true" style="font-size:28px"></i> &nbsp;&nbsp; Following : &nbsp;&nbsp; <span class="display">{{user.following}}</span></p>
+                   <p><i class="fa fa-user-plus" aria-hidden="true" style="font-size:28px"></i> &nbsp;&nbsp; Followers : &nbsp;&nbsp; <span class="display">{{user.followers}}</span></p>
+                   <p><i class="fa fa-clock-o" aria-hidden="true" style="font-size:28px"></i> &nbsp;&nbsp; Joined on : <span class="join">{{user.created_at | datePipe}}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-center repos" id="repo">
+    <h3>User Repositories</h3>
+    <div class="container repositories">
+        <div class="card" *ngFor='let repo of repo'>
+           <div class="card-body">
+               <h5 class="card-tittle"><span id="component">Repo name :{{repo.name}} &nbsp;</span></h5>
+               <div class="card-text">
+                 <hr>
+                 <div class="dec">
+                     <span id="component"> Description : <br>
+                        {{repo.description}}
+                     </span>
+                 </div>
+                 <hr>
+                 <div class="card-subtitle mb-2">
+                    <span id="component"> Language used : {{repo.language}}&nbsp;</span>
+                 </div>
+                 <hr>
+                 <div class="card-subtitle mb-2"><span class="top">Created:&nbsp; <span id="created">{{repo.created_at | datePipe}}</span> &nbsp;  On:</span> &nbsp;{{repo.created_at | date}}
+                 </div>
+               </div>
+           </div>
+           <div class="card-footer">
+               <p class="clearfix"><a  class="btn btn-sm btn-warning pull-center" href="{{repo.html_url}}">View this project on github</a></p>
+           </div>
+        </div>
+    </div>
+</div>
